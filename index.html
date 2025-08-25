@@ -3,31 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Premium Motion Graphics Bundles</title>
+<title>3D Premium Graphic Designer Landing</title>
 
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@700&display=swap" rel="stylesheet">
 
-<!-- Tailwind CDN -->
+<!-- Tailwind CSS -->
 <script src="https://cdn.tailwindcss.com"></script>
 
 <!-- GSAP + ScrollTrigger -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-<!-- Three.js for 3D hero -->
+<!-- Three.js -->
 <script src="https://unpkg.com/three@0.161.0/build/three.min.js"></script>
 
 <style>
-  body { margin:0; font-family:'Inter', sans-serif; background:#060617; color:#e6eef8; }
-  h1,h2,h3 { font-family:'Montserrat', sans-serif; }
-  .glass { background: rgba(255,255,255,0.05); backdrop-filter: blur(6px); border:1px solid rgba(255,255,255,0.08); border-radius:16px; box-shadow:0 10px 40px rgba(0,0,0,0.6); padding:1rem; }
-  .btn { padding:0.75rem 1.5rem; border-radius:10px; font-weight:600; cursor:pointer; transition:0.3s; }
-  .btn-primary { background:linear-gradient(90deg,#7c3aed,#06b6d4); color:white; }
-  .btn-primary:hover { opacity:0.85; }
-  .hero-canvas { position:fixed; inset:0; z-index:-1; }
-  .section { padding:6rem 2rem; }
-  .tilt { transition: transform 0.35s ease; transform-style: preserve-3d; }
+body { margin:0; font-family:'Inter',sans-serif; background:#060617; color:#e6eef8; overflow-x:hidden; }
+h1,h2,h3 { font-family:'Montserrat',sans-serif; }
+.glass { background: rgba(255,255,255,0.05); backdrop-filter: blur(8px); border:1px solid rgba(255,255,255,0.08); border-radius:16px; box-shadow:0 10px 40px rgba(0,0,0,0.6); padding:1.5rem; }
+.btn { padding:0.75rem 1.5rem; border-radius:12px; font-weight:600; cursor:pointer; transition:0.3s; background:linear-gradient(90deg,#7c3aed,#06b6d4); color:white; }
+.btn:hover { opacity:0.85; }
+.hero-canvas { position:fixed; inset:0; z-index:-1; }
+.section { padding:6rem 2rem; }
+.tilt { transition: transform 0.35s ease; transform-style: preserve-3d; }
 </style>
 </head>
 <body>
@@ -35,134 +34,133 @@
 <canvas id="heroCanvas" class="hero-canvas"></canvas>
 
 <header class="section text-center">
-  <h1 class="text-5xl font-bold mb-4">Premium Motion Graphics & Templates</h1>
-  <p class="text-gray-300 text-lg max-w-2xl mx-auto">Agency-level, editable, high-quality bundles for creators.</p>
-  <div class="mt-6">
-    <button class="btn btn-primary" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">View Products</button>
-  </div>
+<h1 class="text-5xl font-bold mb-4">Hi, I'm Abhishek Deshmukh</h1>
+<p class="text-gray-300 text-lg max-w-2xl mx-auto">I create premium AI & graphic design assets for creators worldwide.</p>
+<div class="mt-6">
+<button class="btn" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">View My Work</button>
+</div>
 </header>
 
 <section id="products" class="section max-w-7xl mx-auto grid md:grid-cols-2 gap-8">
-  <div class="glass tilt">
-    <h2 class="text-2xl font-semibold mb-2">Glowing Motion Graphics</h2>
-    <p class="text-gray-400 mb-2">1500+ animated overlays & transitions. MP4, MOV, PNG.</p>
-    <p class="font-bold text-xl">₹1,499</p>
-    <button class="btn btn-primary mt-2" onclick="alert('Payment Link Placeholder')">Buy Now</button>
-  </div>
-  <div class="glass tilt">
-    <h2 class="text-2xl font-semibold mb-2">Creative Template Pack</h2>
-    <p class="text-gray-400 mb-2">500+ templates for social & ads. PSD, Figma.</p>
-    <p class="font-bold text-xl">₹999</p>
-    <button class="btn btn-primary mt-2" onclick="alert('Payment Link Placeholder')">Buy Now</button>
-  </div>
+<div class="glass tilt">
+<h2 class="text-2xl font-semibold mb-2">Glowing Motion Graphics</h2>
+<p class="text-gray-400 mb-2">1500+ animated overlays & transitions. MP4, MOV, PNG.</p>
+<p class="font-bold text-xl">₹1,499</p>
+<button class="btn mt-2" onclick="alert('Payment Link Placeholder')">Buy Now</button>
+</div>
+<div class="glass tilt">
+<h2 class="text-2xl font-semibold mb-2">Creative Template Pack</h2>
+<p class="text-gray-400 mb-2">500+ templates for social & ads. PSD, Figma.</p>
+<p class="font-bold text-xl">₹999</p>
+<button class="btn mt-2" onclick="alert('Payment Link Placeholder')">Buy Now</button>
+</div>
 </section>
 
 <section id="features" class="section text-center">
-  <h2 class="text-3xl font-bold mb-6">Why Creators Love Our Packs</h2>
-  <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-6">
-    <div class="glass tilt">Time-Saving<br><span class="text-gray-400">Drag & drop ready assets</span></div>
-    <div class="glass tilt">Editable Sources<br><span class="text-gray-400">Fully customizable files</span></div>
-    <div class="glass tilt">Commercial License<br><span class="text-gray-400">Use for clients & projects</span></div>
-  </div>
+<h2 class="text-3xl font-bold mb-6">Why Creators Love My Work</h2>
+<div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-6">
+<div class="glass tilt">Time-Saving<br><span class="text-gray-400">Drag & drop ready assets</span></div>
+<div class="glass tilt">Editable Sources<br><span class="text-gray-400">Fully customizable files</span></div>
+<div class="glass tilt">Commercial License<br><span class="text-gray-400">Use for clients & projects</span></div>
+</div>
 </section>
 
 <section id="pricing" class="section text-center">
-  <h2 class="text-3xl font-bold mb-4">Pricing Plans</h2>
-  <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-6">
-    <div class="glass tilt">
-      <h3 class="font-semibold">Basic</h3>
-      <p class="font-bold text-xl mt-2">₹12,000</p>
-      <p class="text-gray-400 mt-1">Single landing page + payment setup</p>
-    </div>
-    <div class="glass tilt">
-      <h3 class="font-semibold">Standard</h3>
-      <p class="font-bold text-xl mt-2">₹20,000</p>
-      <p class="text-gray-400 mt-1">Multi-section + email automation</p>
-    </div>
-    <div class="glass tilt">
-      <h3 class="font-semibold">Premium</h3>
-      <p class="font-bold text-xl mt-2">₹35,000</p>
-      <p class="text-gray-400 mt-1">Full 3D hero + store + automation</p>
-    </div>
-  </div>
+<h2 class="text-3xl font-bold mb-4">Pricing Plans</h2>
+<div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-6">
+<div class="glass tilt">
+<h3 class="font-semibold">Basic</h3>
+<p class="font-bold text-xl mt-2">₹12,000</p>
+<p class="text-gray-400 mt-1">Single landing page + payment setup</p>
+</div>
+<div class="glass tilt">
+<h3 class="font-semibold">Standard</h3>
+<p class="font-bold text-xl mt-2">₹20,000</p>
+<p class="text-gray-400 mt-1">Multi-section + email automation</p>
+</div>
+<div class="glass tilt">
+<h3 class="font-semibold">Premium</h3>
+<p class="font-bold text-xl mt-2">₹35,000</p>
+<p class="text-gray-400 mt-1">Full 3D hero + store + automation</p>
+</div>
+</div>
 </section>
 
 <footer class="section text-center text-gray-400">
-  &copy; 2025 Midow Web Creator • WhatsApp: 8793727113
+&copy; 2025 Abhishek Deshmukh • WhatsApp: 8793727113
 </footer>
 
 <script>
-  // 3D Hero setup (Three.js)
-  const canvas = document.getElementById('heroCanvas');
-  const renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true });
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(50, window.innerWidth/window.innerHeight, 0.1, 100);
-  camera.position.z = 6;
+const canvas = document.getElementById('heroCanvas');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, window.innerWidth/window.innerHeight, 0.1, 100);
+camera.position.z = 6;
 
-  const ambient = new THREE.AmbientLight(0xffffff,0.5);
-  scene.add(ambient);
-  const dir = new THREE.DirectionalLight(0xffffff,0.8);
-  dir.position.set(5,5,5);
-  scene.add(dir);
+const ambient = new THREE.AmbientLight(0xffffff,0.5);
+scene.add(ambient);
+const dir = new THREE.DirectionalLight(0xffffff,0.8);
+dir.position.set(5,5,5);
+scene.add(dir);
 
-  const geometry = new THREE.TorusKnotGeometry(1,0.3,220,40);
-  const material = new THREE.MeshStandardMaterial({ color:0x7c3aed, metalness:0.5, roughness:0.2, emissive:0x3b0764, emissiveIntensity:0.9 });
-  const knot = new THREE.Mesh(geometry,material);
-  scene.add(knot);
+const geometry = new THREE.TorusKnotGeometry(1,0.3,220,40);
+const material = new THREE.MeshStandardMaterial({ color:0x7c3aed, metalness:0.5, roughness:0.2, emissive:0x3b0764, emissiveIntensity:0.9 });
+const knot = new THREE.Mesh(geometry,material);
+scene.add(knot);
 
-  const glowMat = new THREE.MeshBasicMaterial({ color:0x7c3aed, blending:THREE.AdditiveBlending, transparent:true, opacity:0.18 });
-  const glow = new THREE.Mesh(geometry,glowMat);
-  glow.scale.set(1.2,1.2,1.2);
-  scene.add(glow);
+const glowMat = new THREE.MeshBasicMaterial({ color:0x7c3aed, blending:THREE.AdditiveBlending, transparent:true, opacity:0.18 });
+const glow = new THREE.Mesh(geometry,glowMat);
+glow.scale.set(1.2,1.2,1.2);
+scene.add(glow);
 
-  const particleCount = 900;
-  const positions = new Float32Array(particleCount*3);
-  for(let i=0;i<particleCount;i++){
-    positions[i*3] = (Math.random()-0.5)*15;
-    positions[i*3+1] = (Math.random()-0.5)*15;
-    positions[i*3+2] = (Math.random()-0.5)*15;
-  }
-  const pGeom = new THREE.BufferGeometry();
-  pGeom.setAttribute('position', new THREE.BufferAttribute(positions,3));
-  const pMat = new THREE.PointsMaterial({ size:0.04,color:0xa6c8ff,transparent:true,opacity:0.85 });
-  const particles = new THREE.Points(pGeom,pMat);
-  scene.add(particles);
+const particleCount = 900;
+const positions = new Float32Array(particleCount*3);
+for(let i=0;i<particleCount;i++){
+  positions[i*3] = (Math.random()-0.5)*15;
+  positions[i*3+1] = (Math.random()-0.5)*15;
+  positions[i*3+2] = (Math.random()-0.5)*15;
+}
+const pGeom = new THREE.BufferGeometry();
+pGeom.setAttribute('position', new THREE.BufferAttribute(positions,3));
+const pMat = new THREE.PointsMaterial({ size:0.04,color:0xa6c8ff,transparent:true,opacity:0.85 });
+const particles = new THREE.Points(pGeom,pMat);
+scene.add(particles);
 
-  gsap.to(knot.rotation,{duration:28,y:"+=6.28",ease:"none",repeat:-1});
-  gsap.to(knot.rotation,{duration:34,x:"+=6.28",ease:"none",repeat:-1,delay:1});
-  gsap.to(glow.material,{opacity:0.22,duration:3.5,yoyo:true,repeat:-1,ease:"sine.inOut"});
+gsap.to(knot.rotation,{duration:28,y:"+=6.28",ease:"none",repeat:-1});
+gsap.to(knot.rotation,{duration:34,x:"+=6.28",ease:"none",repeat:-1,delay:1});
+gsap.to(glow.material,{opacity:0.22,duration:3.5,yoyo:true,repeat:-1,ease:"sine.inOut"});
 
-  const mouse = { x:0, y:0 };
-  window.addEventListener('mousemove',(e)=>{mouse.x=(e.clientX/window.innerWidth)*2-1;mouse.y=(e.clientY/window.innerHeight)*2-1;});
-  function animate(){
-    camera.position.x += (mouse.x*0.6 - camera.position.x)*0.05;
-    camera.position.y += (mouse.y*0.25 - camera.position.y)*0.05;
-    camera.lookAt(0,0,0);
-    renderer.render(scene,camera);
-    requestAnimationFrame(animate);
-  }
-  animate();
-  window.addEventListener('resize',()=>{renderer.setSize(window.innerWidth,window.innerHeight); camera.aspect=window.innerWidth/window.innerHeight; camera.updateProjectionMatrix();});
+const mouse = { x:0, y:0 };
+window.addEventListener('mousemove',(e)=>{mouse.x=(e.clientX/window.innerWidth)*2-1;mouse.y=(e.clientY/window.innerHeight)*2-1;});
+function animate(){
+  camera.position.x += (mouse.x*0.6 - camera.position.x)*0.05;
+  camera.position.y += (mouse.y*0.25 - camera.position.y)*0.05;
+  camera.lookAt(0,0,0);
+  renderer.render(scene,camera);
+  requestAnimationFrame(animate);
+}
+animate();
+window.addEventListener('resize',()=>{renderer.setSize(window.innerWidth,window.innerHeight); camera.aspect=window.innerWidth/window.innerHeight; camera.updateProjectionMatrix();});
 
-  // GSAP Scroll Animations
-  gsap.registerPlugin(ScrollTrigger);
-  gsap.from('.tilt',{y:40,opacity:0,stagger:0.15,duration:0.9,ease:'power3.out',scrollTrigger:{trigger:'#products',start:'top 80%'}});
-  gsap.from('#features .tilt',{y:30,opacity:0,stagger:0.12,duration:0.8,ease:'power3.out',scrollTrigger:{trigger:'#features',start:'top 80%'}});
-  gsap.from('#pricing .tilt',{scale:0.96,opacity:0,stagger:0.12,duration:0.8,ease:'back.out(1.2)',scrollTrigger:{trigger:'#pricing',start:'top 85%'}});
+// GSAP Scroll Animations
+gsap.registerPlugin(ScrollTrigger);
+gsap.from('.tilt',{y:40,opacity:0,stagger:0.15,duration:0.9,ease:'power3.out',scrollTrigger:{trigger:'#products',start:'top 80%'}});
+gsap.from('#features .tilt',{y:30,opacity:0,stagger:0.12,duration:0.8,ease:'power3.out',scrollTrigger:{trigger:'#features',start:'top 80%'}});
+gsap.from('#pricing .tilt',{scale:0.96,opacity:0,stagger:0.12,duration:0.8,ease:'back.out(1.2)',scrollTrigger:{trigger:'#pricing',start:'top 85%'}});
 
-  document.querySelectorAll('.tilt').forEach(card=>{
-    card.addEventListener('mousemove',(e)=>{
-      const rect=card.getBoundingClientRect();
-      const x=(e.clientX-rect.left)/rect.width;
-      const y=(e.clientY-rect.top)/rect.height;
-      const rotY=(x-0.5)*8;
-      const rotX=(y-0.5)*-6;
-      gsap.to(card,{rotateY:rotY,rotateX:rotX,duration:0.35,ease:'power2.out'});
-    });
-    card.addEventListener('mouseleave'=>gsap.to(card,{rotateY:0,rotateX:0,duration:0.6,ease:'power2.out'}));
+document.querySelectorAll('.tilt').forEach(card=>{
+  card.addEventListener('mousemove',(e)=>{
+    const rect=card.getBoundingClientRect();
+    const x=(e.clientX-rect.left)/rect.width;
+    const y=(e.clientY-rect.top)/rect.height;
+    const rotY=(x-0.5)*8;
+    const rotX=(y-0.5)*-6;
+    gsap.to(card,{rotateY:rotY,rotateX:rotX,duration:0.35,ease:'power2.out'});
   });
+  card.addEventListener('mouseleave',()=>gsap.to(card,{rotateY:0,rotateX:0,duration:0.6,ease:'power2.out'}));
+});
 </script>
 
 </body>
-</html>
+  </html>
