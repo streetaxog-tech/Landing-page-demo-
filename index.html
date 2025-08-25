@@ -3,296 +3,290 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Midow Web Creator — Premium Assets</title>
-  <meta name="description" content="Premium motion graphics & template bundles — instant delivery." />
-  <!-- Tailwind for layout -->
+  <title>Midow Web Creator — Premium Motion Packs</title>
+  <meta name="description" content="Premium motion graphics and template bundles — instant delivery." />
+
+  <!-- Tailwind (for layout) -->
   <script src="https://cdn.tailwindcss.com"></script>
+
   <!-- three.js -->
   <script src="https://unpkg.com/three@0.161.0/build/three.min.js"></script>
-  <!-- GLTF loader (in case you later want a model) -->
+  <!-- GLTF loader (optional) -->
   <script src="https://unpkg.com/three@0.161.0/examples/js/loaders/GLTFLoader.js"></script>
-  <!-- Simplex noise for particle motion -->
+  <!-- Simplex noise (nice particle motion) -->
   <script src="https://unpkg.com/simplex-noise@3.0.0/simplex-noise.min.js"></script>
-  <!-- GSAP for polished animations -->
+  <!-- GSAP for fluid UI animations -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <!-- Razorpay Checkout (only if using checkout flow) -->
+  <!-- Razorpay (only if you use Checkout option) -->
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
   <style>
     html,body,#bg-canvas { height:100%; margin:0; }
-    body { background: #070814; color: #e6eef8; -webkit-font-smoothing:antialiased; }
-    .glass { background: rgba(255,255,255,0.04); backdrop-filter: blur(6px); }
-    .card { border-radius: 14px; box-shadow: 0 10px 40px rgba(2,6,23,0.6); overflow: hidden; }
-    .purchase-btn { transition: transform .15s ease, box-shadow .15s ease; }
-    .purchase-btn:active { transform: translateY(1px) scale(.998); }
-    /* small responsive fix for canvas layering */
+    body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background: #070814; color:#e6eef8; -webkit-font-smoothing:antialiased; }
+    .glass { background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.04); }
+    .card { border-radius: 14px; box-shadow: 0 12px 40px rgba(2,6,23,0.7); overflow: hidden; }
+    .btn-primary { background: linear-gradient(90deg,#7c3aed,#06b6d4); color:white; padding:10px 16px; border-radius:10px; font-weight:600; box-shadow: 0 8px 24px rgba(99,102,241,0.18); }
+    .btn-outline { padding:10px 14px; border-radius:10px; border:1px solid rgba(255,255,255,0.08); color:#dbeafe; }
+    .logo-mark { font-weight:700; letter-spacing:0.4px; }
+    .small-muted { color:#b3c0d9; }
+    /* product image mask */
+    .img-mask { aspect-ratio: 16/9; object-fit: cover; width:100%; border-radius:10px; }
+    /* tilt transform smoothing */
+    .tilt { transform-style: preserve-3d; backface-visibility: hidden; will-change: transform; }
+    /* make sure canvas sits behind content */
     .hero-wrapper { position: relative; z-index: 2; }
-    .scene-overlay { position: absolute; inset:0; pointer-events: none; z-index:1; }
+    .scene-overlay { position:absolute; inset:0; pointer-events:none; z-index:1; mix-blend-mode:screen; }
+    /* responsive tweaks */
+    @media (max-width:768px) {
+      .hero-title { font-size:1.6rem; }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Fullscreen WebGL canvas -->
-  <canvas id="bg-canvas" class="fixed inset-0 w-full h-full -z-10"></canvas>
+<!-- WebGL background -->
+<canvas id="bg-canvas" class="fixed inset-0 w-full h-full -z-10"></canvas>
 
-  <!-- Header -->
-  <header class="max-w-6xl mx-auto px-6 py-6 relative hero-wrapper">
-    <div class="flex items-start justify-between">
-      <div>
-        <h1 class="text-3xl md:text-4xl font-extrabold">Midow Web Creator</h1>
-        <p class="text-gray-300 mt-1">Premium Motion Graphics & Template Bundles — Instant Delivery</p>
-      </div>
-      <div class="text-sm text-gray-400 text-right">
-        <div>Call / WhatsApp: <strong class="text-white">8793727113</strong></div>
-        <div class="mt-1"><a href="https://midoww-web-creater.vercel.app" target="_blank" class="underline">midoww-web-creater.vercel.app</a></div>
-      </div>
+<header class="max-w-7xl mx-auto px-6 py-6 hero-wrapper">
+  <div class="flex items-center justify-between">
+    <div>
+      <div class="logo-mark text-white text-lg">Midow Web Creator</div>
+      <div class="small-muted text-sm">Premium Motion Graphics • Templates • Reels Packs</div>
     </div>
-  </header>
+    <div class="text-right small-muted text-sm">
+      <div>WhatsApp: <strong class="text-white">8793727113</strong></div>
+      <div class="mt-1"><a class="underline" href="https://midoww-web-creater.vercel.app" target="_blank">midoww-web-creater.vercel.app</a></div>
+    </div>
+  </div>
+</header>
 
-  <main class="max-w-6xl mx-auto px-6 relative hero-wrapper">
-    <!-- Hero -->
-    <section class="text-center py-12">
-      <h2 class="text-4xl md:text-5xl font-extrabold leading-tight">Sell Your Digital Assets — Design Kits & Motion Packs</h2>
-      <p class="text-gray-300 max-w-2xl mx-auto mt-4">High-quality, editable assets — instant delivery after secure payment. Demo uses hosted links or checkout flow.</p>
-    </section>
+<main class="max-w-7xl mx-auto px-6 hero-wrapper">
+  <!-- Hero -->
+  <section class="text-center pt-10 pb-8">
+    <h1 class="hero-title text-4xl md:text-5xl font-extrabold leading-tight">International-grade Motion Packs & Templates</h1>
+    <p class="small-muted max-w-3xl mx-auto mt-4">Ready-to-use assets for creators and brands — polished, editable, and instant delivery after secure payment.</p>
+  </section>
 
-    <!-- Products Grid -->
-    <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-14">
-      <!-- Product card 1 -->
-      <article class="card glass p-6 transform hover:-translate-y-2 transition" data-id="prod_1">
-        <div class="flex flex-col md:flex-row gap-6">
-          <img src="https://via.placeholder.com/640x360?text=Glowing+Motion+Graphics" alt="Product 1" class="rounded-lg w-full md:w-1/2 object-cover" />
-          <div class="flex-1">
-            <h3 class="text-2xl font-semibold">Glowing Motion Graphics</h3>
-            <p class="text-gray-300 mt-3">1500+ animated overlays, transitions & elements. Editable formats, perfect for reels & shorts.</p>
-            <ul class="text-sm text-gray-400 mt-3 space-y-1">
-              <li>• Formats: MP4, MOV, PNG sequences</li>
-              <li>• Commercial use allowed (see license)</li>
-              <li>• Easy drag-and-drop templates</li>
-            </ul>
+  <!-- Products -->
+  <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+    <!-- Product 1 -->
+    <article class="card glass p-6 tilt" data-id="prod_1">
+      <div class="md:flex gap-6">
+        <img class="img-mask md:w-1/2 rounded-lg" src="https://images.unsplash.com/photo-1523475496153-3d6cc7bca2d9?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=1" alt="Glowing Motion Graphics">
+        <div class="md:flex-1 mt-4 md:mt-0">
+          <h3 class="text-2xl font-semibold">Glowing Motion Graphics</h3>
+          <p class="small-muted mt-3">1500+ high-quality animated overlays, transitions, and elements. Works with Premiere/After Effects/FCP.</p>
+          <ul class="small-muted mt-3 text-sm space-y-1">
+            <li>• Formats: MP4, MOV, PNG sequences</li>
+            <li>• Commercial license included</li>
+            <li>• Organized folders & editable templates</li>
+          </ul>
 
-            <div class="mt-6 flex items-center gap-4">
-              <div class="text-2xl font-bold">₹1,499</div>
-
-              <div class="ml-auto flex gap-3">
-                <!-- Hosted Payment Link button: set data-payment-link attribute -->
-                <button class="purchase-btn px-4 py-2 rounded-md bg-indigo-600 hover:bg-indigo-700 text-white" 
-                        data-product-id="prod_1"
-                        data-price="1499"
-                        data-payment-link="">
-                  Buy (Payment Link)
-                </button>
-
-                <!-- Checkout button (calls /create-order) -->
-                <button class="checkout-btn px-4 py-2 rounded-md border border-indigo-500 text-indigo-100">Buy (Checkout)</button>
-              </div>
+          <div class="mt-6 flex items-center gap-4">
+            <div class="text-2xl font-bold">₹1,499</div>
+            <div class="ml-auto flex gap-3">
+              <!-- Hosted payment link (put Razorpay hosted link in data-payment-link) -->
+              <button class="btn-primary purchase-btn" data-product-id="prod_1" data-price="1499" data-payment-link="">
+                Buy (Payment Link)
+              </button>
+              <!-- Checkout (requires server-side /create-order) -->
+              <button class="btn-outline checkout-btn">Buy (Checkout)</button>
             </div>
           </div>
         </div>
-      </article>
+      </div>
+    </article>
 
-      <!-- Product card 2 -->
-      <article class="card glass p-6 transform hover:-translate-y-2 transition" data-id="prod_2">
-        <div class="flex flex-col md:flex-row gap-6">
-          <img src="https://via.placeholder.com/640x360?text=Creative+Template+Pack" alt="Product 2" class="rounded-lg w-full md:w-1/2 object-cover" />
-          <div class="flex-1">
-            <h3 class="text-2xl font-semibold">Creative Template Pack</h3>
-            <p class="text-gray-300 mt-3">500+ editable templates for Instagram, YouTube thumbnails, and ads. Fast to customize.</p>
-            <ul class="text-sm text-gray-400 mt-3 space-y-1">
-              <li>• Formats: PSD, Figma, Canva friendly exports</li>
-              <li>• Optimized for engagement & conversions</li>
-            </ul>
+    <!-- Product 2 -->
+    <article class="card glass p-6 tilt" data-id="prod_2">
+      <div class="md:flex gap-6">
+        <img class="img-mask md:w-1/2 rounded-lg" src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=2" alt="Creative Template Pack">
+        <div class="md:flex-1 mt-4 md:mt-0">
+          <h3 class="text-2xl font-semibold">Creative Template Pack</h3>
+          <p class="small-muted mt-3">500+ editable templates (Canva/Figma/PSD) designed for high engagement and fast editing.</p>
+          <ul class="small-muted mt-3 text-sm space-y-1">
+            <li>• Formats: PSD, Figma, Canva exports</li>
+            <li>• Ready for Instagram, YouTube & Ads</li>
+            <li>• Easily customizable layers</li>
+          </ul>
 
-            <div class="mt-6 flex items-center gap-4">
-              <div class="text-2xl font-bold">₹999</div>
-              <div class="ml-auto flex gap-3">
-                <button class="purchase-btn px-4 py-2 rounded-md bg-indigo-600 hover:bg-indigo-700 text-white" 
-                        data-product-id="prod_2"
-                        data-price="999"
-                        data-payment-link="">
-                  Buy (Payment Link)
-                </button>
-                <button class="checkout-btn px-4 py-2 rounded-md border border-indigo-500 text-indigo-100">Buy (Checkout)</button>
-              </div>
+          <div class="mt-6 flex items-center gap-4">
+            <div class="text-2xl font-bold">₹999</div>
+            <div class="ml-auto flex gap-3">
+              <button class="btn-primary purchase-btn" data-product-id="prod_2" data-price="999" data-payment-link="">
+                Buy (Payment Link)
+              </button>
+              <button class="btn-outline checkout-btn">Buy (Checkout)</button>
             </div>
           </div>
         </div>
-      </article>
-    </section>
+      </div>
+    </article>
+  </section>
 
-    <!-- Small footer note -->
-    <section class="text-sm text-gray-400 mb-20">
-      <p><strong>Note:</strong> For an instant demo, please provide Razorpay hosted payment links for each product (I will paste them into the live page). For full onsite checkout we need a small server endpoint `/create-order` (I can set up for extra fees or you can use your own).</p>
-    </section>
+  <section class="text-center small-muted mb-24">
+    <p>For demo: paste Razorpay hosted payment links into the Buy (Payment Link) buttons, and replace Drive IDs in the thank you flow. For full checkout, set up the small server endpoint `/create-order` (I can provide code).</p>
+  </section>
+</main>
 
-  </main>
-
-  <footer class="max-w-6xl mx-auto px-6 pb-12 text-center text-gray-400">
-    © <span id="year"></span> Midow Web Creator — All rights reserved.
-  </footer>
+<footer class="max-w-7xl mx-auto px-6 pb-12 text-center small-muted">
+  © <span id="year"></span> Midow Web Creator — All rights reserved.
+</footer>
 
 <script>
-/* ======= set copyright year ======= */
-document.getElementById('year').textContent = new Date().getFullYear();
+  document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 
 <!-- =========================
-   THREE.JS 3D SCENE + PARTICLES
+   THREE.JS BACKGROUND SCENE (professional: glow + particles + orbit)
    ========================= -->
 <script>
 (() => {
   const canvas = document.getElementById('bg-canvas');
-  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
   renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1;
 
   const scene = new THREE.Scene();
-  // subtle fog for depth
   scene.fog = new THREE.FogExp2(0x070814, 0.02);
 
-  const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 100);
-  camera.position.set(0, 0, 6);
+  const camera = new THREE.PerspectiveCamera(50, window.innerWidth/window.innerHeight, 0.1, 100);
+  camera.position.set(0,0,6);
 
   // lights
-  const ambient = new THREE.AmbientLight(0xffffff, 0.45);
+  const ambient = new THREE.AmbientLight(0xffffff, .5);
   scene.add(ambient);
-  const dir = new THREE.DirectionalLight(0xffffff, 0.9);
-  dir.position.set(5, 5, 5);
+  const dir = new THREE.DirectionalLight(0xffffff, .9);
+  dir.position.set(5,5,5);
   scene.add(dir);
 
-  // central main mesh (torus knot + emissive glow duplicate)
-  const geom = new THREE.TorusKnotGeometry(1.15, 0.35, 220, 40);
+  // central glowing mesh - torus knot
+  const geom = new THREE.TorusKnotGeometry(1.05, 0.28, 220, 40);
   const mat = new THREE.MeshStandardMaterial({
     color: 0x7c3aed,
     metalness: 0.6,
-    roughness: 0.25,
-    emissive: 0x40146b,
-    emissiveIntensity: 0.8
+    roughness: 0.22,
+    emissive: 0x3b0764,
+    emissiveIntensity: 0.9
   });
   const knot = new THREE.Mesh(geom, mat);
-  knot.rotation.x = 0.6;
+  knot.rotation.x = 0.5;
+  knot.scale.set(1.05,1.05,1.05);
   scene.add(knot);
 
-  // glow mesh (scaled, additive)
-  const glowMat = new THREE.MeshBasicMaterial({ color: 0x7c3aed, blending: THREE.AdditiveBlending, transparent: true, opacity: 0.25 });
+  // soft additive shell for glow
+  const glowMat = new THREE.MeshBasicMaterial({ color: 0x7c3aed, blending: THREE.AdditiveBlending, transparent:true, opacity:0.18 });
   const glow = new THREE.Mesh(geom, glowMat);
-  glow.scale.set(1.15,1.15,1.15);
+  glow.scale.set(1.2,1.2,1.2);
   scene.add(glow);
 
-  // particle system
-  const particleCount = 1200;
-  const positions = new Float32Array(particleCount * 3);
-  const sizes = new Float32Array(particleCount);
-  for (let i=0; i<particleCount; i++){
-    const r = 6 + Math.random()*6;
-    const theta = Math.random() * Math.PI * 2;
-    const phi = (Math.random() - 0.5) * Math.PI;
-    positions[i*3] = r * Math.cos(theta) * Math.cos(phi);
-    positions[i*3+1] = r * Math.sin(phi) * (Math.random()*0.8);
-    positions[i*3+2] = r * Math.sin(theta) * Math.cos(phi);
-    sizes[i] = 1 + Math.random()*3;
+  // particles - points cloud
+  const particleCount = 1000;
+  const ppos = new Float32Array(particleCount*3);
+  for (let i=0;i<particleCount;i++){
+    const r = 4 + Math.random()*6;
+    const theta = Math.random()*Math.PI*2;
+    const phi = (Math.random()-0.5)*Math.PI;
+    ppos[i*3] = r * Math.cos(theta) * Math.cos(phi);
+    ppos[i*3+1] = r * Math.sin(phi) * (Math.random()*0.8);
+    ppos[i*3+2] = r * Math.sin(theta) * Math.cos(phi);
   }
-  const particleGeom = new THREE.BufferGeometry();
-  particleGeom.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-  particleGeom.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
-  const particleMat = new THREE.PointsMaterial({ color: 0x9fb4ff, size: 0.06, transparent: true, opacity: 0.8 });
-  const particles = new THREE.Points(particleGeom, particleMat);
+  const pGeom = new THREE.BufferGeometry();
+  pGeom.setAttribute('position', new THREE.BufferAttribute(ppos,3));
+  const pMat = new THREE.PointsMaterial({ size: 0.045, color: 0xa6c8ff, transparent:true, opacity:0.85 });
+  const particles = new THREE.Points(pGeom, pMat);
   scene.add(particles);
 
-  // subtle camera orbit animations using GSAP
-  gsap.to(camera.position, { duration: 12, z: 5.2, ease: "sine.inOut", yoyo: true, repeat: -1 });
-  gsap.to(knot.rotation, { duration: 18, y: "+=6.28", ease: "none", repeat: -1 });
+  // subtle animations
+  gsap.to(knot.rotation, { duration: 24, y: "+=6.28", ease: "none", repeat: -1 });
+  gsap.to(knot.rotation, { duration: 30, x: "+=6.28", ease: "none", repeat: -1, delay:2 });
+  gsap.to(glow.material, { opacity: 0.22, duration: 3, yoyo:true, repeat:-1, ease:"sine.inOut" });
 
-  // mouse parallax
-  const mouse = { x: 0, y: 0 };
-  window.addEventListener('mousemove', (e) => {
-    mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
-    mouse.y = (e.clientY / window.innerHeight) * 2 - 1;
+  // parallax mouse
+  const mouse = { x:0, y:0 };
+  window.addEventListener('mousemove', e => {
+    mouse.x = (e.clientX/window.innerWidth)*2 - 1;
+    mouse.y = (e.clientY/window.innerHeight)*2 - 1;
   });
 
-  // responsive
-  window.addEventListener('resize', () => {
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    camera.aspect = window.innerWidth/window.innerHeight;
-    camera.updateProjectionMatrix();
-  });
-
-  // animate
+  // animation loop
   const clock = new THREE.Clock();
   function animate(){
     const t = clock.getElapsedTime();
-    // particles slight motion
-    const pos = particleGeom.attributes.position.array;
+    // move particles slightly
+    const arr = pGeom.attributes.position.array;
     for (let i=0;i<particleCount;i++){
       const idx = i*3;
-      pos[idx] += Math.sin(t*0.2 + i) * 0.0005;
-      pos[idx+1] += Math.cos(t*0.15 + i) * 0.0005;
-      pos[idx+2] += Math.cos(t*0.12 + i) * 0.0005;
+      arr[idx] += Math.sin(t*0.07 + i) * 0.0008;
+      arr[idx+1] += Math.cos(t*0.06 + i) * 0.0007;
     }
-    particleGeom.attributes.position.needsUpdate = true;
+    pGeom.attributes.position.needsUpdate = true;
 
-    // subtle parallax of scene based on mouse
-    const camTargetX = mouse.x * 0.6;
-    const camTargetY = mouse.y * 0.3;
-    camera.position.x += (camTargetX - camera.position.x) * 0.05;
-    camera.position.y += (camTargetY - camera.position.y) * 0.05;
+    // camera follow mouse
+    const targetX = mouse.x * 0.6;
+    const targetY = mouse.y * 0.25;
+    camera.position.x += (targetX - camera.position.x) * 0.05;
+    camera.position.y += (targetY - camera.position.y) * 0.05;
     camera.lookAt(0,0,0);
-
-    // glow pulse
-    glow.material.opacity = 0.18 + Math.sin(t*1.3)*0.03;
 
     renderer.render(scene, camera);
     requestAnimationFrame(animate);
   }
   animate();
+
+  window.addEventListener('resize', () => {
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    camera.aspect = window.innerWidth/window.innerHeight;
+    camera.updateProjectionMatrix();
+  });
 })();
 </script>
 
 <!-- =========================
-   Purchase / Razorpay logic (hosted link or checkout)
+   Payment logic (hosted link OR checkout)
    ========================= -->
 <script>
-  // helper redirect to thanks page (with dl param)
+  // helper: redirect to thanks page with dl param
   function goToThanks(productId, driveUrl){
     const params = new URLSearchParams({ product: productId, dl: driveUrl });
     window.location.href = 'thanks.html?' + params.toString();
   }
 
-  // hosted payment link mode (easy) - copy client's Razorpay hosted link into data-payment-link
+  // Hosted payment link mode (easy). Put Razorpay hosted link in data-payment-link
   document.querySelectorAll('.purchase-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const link = btn.getAttribute('data-payment-link') || '';
-      const prod = btn.getAttribute('data-product-id');
-      if(link && link.trim() !== ''){
-        // open hosted checkout
+      const pid = btn.getAttribute('data-product-id');
+      if(link && link.trim()){
         window.open(link, '_blank');
         return;
       }
-      // demo fallback: simulate successful payment
-      const simulate = confirm('No hosted payment link found. Simulate successful payment for demo?');
-      if(simulate){
-        const demoDrive = prod === 'prod_1' ? 'https://drive.google.com/uc?export=download&id=DRIVE_FILE_ID_1' : 'https://drive.google.com/uc?export=download&id=DRIVE_FILE_ID_2';
-        goToThanks(prod, demoDrive);
+      // demo fallback - simulate success (for client demo)
+      const ok = confirm('No hosted payment link set. Simulate successful payment for demo?');
+      if(ok){
+        const demoDrive = pid === 'prod_1' ? 'https://drive.google.com/uc?export=download&id=DRIVE_FILE_ID_1' : 'https://drive.google.com/uc?export=download&id=DRIVE_FILE_ID_2';
+        goToThanks(pid, demoDrive);
       }
     });
   });
 
-  // Checkout flow (requires backend /create-order)
+  // Checkout flow - requires server endpoint /create-order
   document.querySelectorAll('.checkout-btn').forEach(btn => {
     btn.addEventListener('click', async (e) => {
-      // find nearest product card to get details
       const card = e.target.closest('.card');
       const buyBtn = card.querySelector('.purchase-btn');
       const productId = buyBtn.getAttribute('data-product-id');
-      const amount = parseInt(buyBtn.getAttribute('data-price')) * 100; // paise
+      const amount = parseInt(buyBtn.getAttribute('data-price')) * 100;
       try {
-        const res = await fetch('/create-order', {
-          method: 'POST',
-          headers: {'Content-Type':'application/json'},
+        const resp = await fetch('/create-order', {
+          method:'POST',
+          headers:{ 'Content-Type':'application/json' },
           body: JSON.stringify({ amount, productId })
         });
-        if(!res.ok) throw new Error('Server error');
-        const data = await res.json(); // { id: order_id, key: key_id, driveLink }
+        if(!resp.ok) throw new Error('Server error');
+        const data = await resp.json(); // { id: order_id, key: key_id, driveLink }
         const options = {
           key: data.key,
           amount: amount,
@@ -300,61 +294,48 @@ document.getElementById('year').textContent = new Date().getFullYear();
           name: 'Midow Web Creator',
           description: 'Purchase',
           order_id: data.id,
-          handler: function(response){
-            // payment succeeded
+          handler: function(resp){
             const dl = data.driveLink || (productId === 'prod_1' ? 'https://drive.google.com/uc?export=download&id=DRIVE_FILE_ID_1' : 'https://drive.google.com/uc?export=download&id=DRIVE_FILE_ID_2');
             goToThanks(productId, dl);
           },
-          prefill: { name: '', email: '', contact: '' },
-          theme: { color: '#6366F1' }
+          prefill: { name:'', email:'', contact:'' },
+          theme: { color:'#7c3aed' }
         };
         const rzp = new Razorpay(options);
-        rzp.on('payment.failed', (err) => { alert('Payment failed: ' + (err.error && err.error.description)); });
+        rzp.on('payment.failed', function(err){ alert('Payment failed: ' + (err.error && err.error.description)); });
         rzp.open();
-      } catch (err) {
+      } catch (err){
         console.error(err);
-        alert('Unable to create order. Check console or server.');
+        alert('Unable to create order. Check server or console.');
       }
     });
   });
 </script>
 
-<!-- =========================
-   Small UI polish with GSAP: card entrance + hover tilt
-   ========================= -->
+<!-- UI polish: entrance + tilt -->
 <script>
-  // entrance animation
-  gsap.from('.card', { y: 30, opacity: 0, stagger: 0.12, duration: 0.9, ease: 'power3.out' });
+  // entrance
+  gsap.from('.card', { y: 30, opacity:0, stagger:0.12, duration:0.9, ease:'power3.out' });
 
-  // tilt on hover
-  document.querySelectorAll('.card').forEach(card => {
+  // tilt interaction
+  document.querySelectorAll('.tilt').forEach(card => {
     card.addEventListener('mousemove', (e) => {
       const rect = card.getBoundingClientRect();
       const x = (e.clientX - rect.left) / rect.width;
       const y = (e.clientY - rect.top) / rect.height;
-      const rotY = (x - 0.5) * 8; // degrees
+      const rotY = (x - 0.5) * 8;
       const rotX = (y - 0.5) * -6;
-      gsap.to(card, { rotateY: rotY, rotateX: rotX, duration: 0.3, transformPerspective:600, ease:'power2.out' });
+      gsap.to(card, { rotateY: rotY, rotateX: rotX, duration:0.35, transformPerspective:800, ease:'power2.out' });
     });
-    card.addEventListener('mouseleave', () => {
-      gsap.to(card, { rotateY: 0, rotateX: 0, duration: 0.6, ease:'power2.out' });
-    });
+    card.addEventListener('mouseleave', () => gsap.to(card, { rotateY:0, rotateX:0, duration:0.6, ease:'power2.out' }));
   });
-
 </script>
 
 <!-- =========================
-   QUICK INSTRUCTIONS (replace placeholders)
-   =========================
-   1) For fast demo: ask Arnav Sir to create Razorpay Hosted Payment Links for each product.
-        - Paste each link into corresponding button's data-payment-link="" attribute.
-   2) Replace DRIVE_FILE_ID_1 and DRIVE_FILE_ID_2 with actual Google Drive file ids.
-        - Make files 'Anyone with the link' and use: https://drive.google.com/uc?export=download&id=FILE_ID
-   3) For full checkout:
-        - Deploy a small backend endpoint /create-order that uses Razorpay SDK (server-side) to create order and returns { id, key, driveLink }.
-        - I can set this up for extra (or provide code snippet to deploy on Vercel Serverless / Heroku).
-   4) Deploy: Push index.html & thanks.html to GitHub and deploy to Netlify/Vercel or host as static site.
+   IMPORTANT: Replace placeholders:
+   - Put Razorpay Hosted Payment Links in data-payment-link=""
+   - Replace DRIVE_FILE_ID_1 / DRIVE_FILE_ID_2 with actual Google Drive file ids or use Gumroad/Payhip links.
+   - For Checkout flow implement /create-order server (sample code available if you want).
 -->
-
 </body>
 </html>
