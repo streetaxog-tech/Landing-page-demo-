@@ -4,71 +4,68 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Thank you — Midow Web Creator</title>
-  <meta name="description" content="Thank you for your purchase. Your download will begin shortly." />
-  <!-- Tailwind CDN -->
+  <meta name="description" content="Thanks — download your files." />
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- confetti (canvas) -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <style>
-    body { background: linear-gradient(180deg,#0b1020 0%, #0b1226 100%); color: #eef2ff; -webkit-font-smoothing:antialiased; }
-    .card { border-radius:12px; background: rgba(255,255,255,0.04); backdrop-filter: blur(6px); box-shadow: 0 10px 40px rgba(2,6,23,0.6); }
-    a.download { display:inline-block; padding:10px 18px; border-radius:8px; background:#6366F1; color:white; text-decoration:none; }
-    .muted { color: #b8c2d9; }
+    body { margin:0; font-family: Inter, system-ui, -apple-system; background: linear-gradient(180deg,#071026 0%, #061325 100%); color: #eef2ff; -webkit-font-smoothing:antialiased; }
+    .card { max-width:720px; margin:72px auto; background: rgba(255,255,255,0.03); border-radius:12px; padding:32px; box-shadow: 0 20px 60px rgba(2,6,23,0.7); text-align:center; }
+    .download-btn { display:inline-block; padding:12px 20px; border-radius:10px; background: linear-gradient(90deg,#06b6d4,#7c3aed); color:white; text-decoration:none; font-weight:600; box-shadow: 0 12px 30px rgba(99,102,241,0.18); }
+    .muted { color:#b7c5de; }
   </style>
 </head>
-<body class="min-h-screen flex items-center justify-center">
+<body>
+  <main class="card">
+    <svg width="84" height="84" viewBox="0 0 24 24" class="mx-auto mb-3">
+      <circle cx="12" cy="12" r="11" fill="rgba(124,58,237,0.12)"/>
+      <path d="M9 12.5l2 2 4-5" stroke="#7c3aed" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </svg>
+    <h1 class="text-2xl font-semibold">Thanks — Order Confirmed</h1>
+    <p id="msg" class="muted mt-2">Your download will start automatically. If it doesn't, use the button below.</p>
 
-  <main class="max-w-2xl w-full p-8 card">
-    <div class="text-center">
-      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" class="mx-auto mb-4">
-        <path d="M12 2v6" stroke="#8b5cf6" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M5 12l2.5 2.5L11 11" stroke="#8b5cf6" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-        <circle cx="12" cy="12" r="9" stroke="#ffffff20" stroke-width="1.2"/>
-      </svg>
-
-      <h1 class="text-2xl font-semibold">Thank you for your purchase!</h1>
-      <p id="sub" class="muted mt-2">We're preparing your download. It should begin automatically. If not, use the button below.</p>
-
-      <div id="actions" class="mt-6 flex justify-center gap-3">
-        <a id="downloadBtn" class="download" href="#" target="_blank" rel="noopener">Download Now</a>
-        <a id="homeBtn" class="muted underline" href="index.html">Return to Home</a>
-      </div>
-
-      <div id="extra" class="text-sm muted mt-5">
-        <p>Check your email for the download link as well. If you face any issue, contact <strong>8793727113</strong> (WhatsApp).</p>
-      </div>
+    <div id="actions" class="mt-6">
+      <a id="downloadBtn" class="download-btn" href="#" target="_blank" rel="noopener">Download Now</a>
+      <div class="mt-4 muted text-sm">A copy of the download link has also been sent to your email (if provided).</div>
     </div>
+
+    <div class="mt-6 muted text-xs">Need help? WhatsApp: <strong class="text-white">8793727113</strong></div>
   </main>
 
 <script>
-  // Read query params
+  // read params
   const params = new URLSearchParams(window.location.search);
-  const dl = params.get('dl'); // direct download url
+  const dl = params.get('dl');
   const product = params.get('product');
-  const btn = document.getElementById('downloadBtn');
-  const sub = document.getElementById('sub');
+
+  const downloadBtn = document.getElementById('downloadBtn');
+  const msg = document.getElementById('msg');
 
   if (dl) {
-    // set link
-    btn.setAttribute('href', dl);
-    // try auto-open (best effort)
+    downloadBtn.href = dl;
+    // launch confetti and auto-open
+    confetti({
+      particleCount: 120,
+      spread: 70,
+      origin: { y: 0.4 }
+    });
     setTimeout(() => {
       try {
-        // open in new tab so user retains this page as fallback
         window.open(dl, '_blank');
-        sub.textContent = 'Your download has started in a new tab. If it did not, click "Download Now".';
-      } catch (e) {
-        sub.textContent = 'Click the Download button if the download did not start automatically.';
+        msg.textContent = 'Your download has started in a new tab. If it did not, click "Download Now".';
+      } catch(e) {
+        msg.textContent = 'Click "Download Now" if the download did not start automatically.';
       }
     }, 900);
   } else {
-    // no dl param provided
-    sub.textContent = 'We could not find an automatic download link. Please check your email or contact support.';
-    btn.style.display = 'none';
+    msg.textContent = 'We could not find a download link. Please check your email or contact support.';
+    downloadBtn.style.display = 'none';
   }
 
-  // Analytics / Pixel (optional - paste pixel code here if needed)
-  // Example placeholder:
-  // (function(){ /* pixel init */ })();
+  // small pulse animation for button
+  setInterval(() => {
+    downloadBtn.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.03)' }, { transform: 'scale(1)'}], { duration: 1800, easing:'ease-in-out' });
+  }, 2200);
 </script>
-
 </body>
 </html>
