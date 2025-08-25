@@ -1,51 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thank You - Premium Motion Packs</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You | Kedarnath Advertising</title>
 
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
 
-<!-- Tailwind CDN -->
-<script src="https://cdn.tailwindcss.com"></script>
+  <!-- Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
-<!-- Canvas Confetti -->
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
-<style>
-  body { margin:0; font-family:'Inter',sans-serif; background:#060617; color:#e6eef8; display:flex; justify-content:center; align-items:center; height:100vh; flex-direction:column; text-align:center; }
-  h1 { font-family:'Montserrat',sans-serif; font-size:3rem; margin-bottom:1rem; }
-  p { color:#a9b7d6; margin-bottom:2rem; }
-  .btn { padding:0.75rem 1.5rem; border-radius:10px; font-weight:600; cursor:pointer; transition:0.3s; background:linear-gradient(90deg,#7c3aed,#06b6d4); color:white; }
-  .btn:hover { opacity:0.85; }
-</style>
+  <style>
+    body { 
+      margin:0; font-family:'Inter',sans-serif; color:#e6eef8; 
+      background: linear-gradient(135deg, #060617, #0d0f28, #1a1c3d, #2c2f55);
+      background-size:400% 400%; animation:bgMove 20s ease infinite; 
+      display:flex; flex-direction:column; justify-content:center; align-items:center; min-height:100vh;
+    }
+    @keyframes bgMove { 
+      0%{background-position:0% 50%} 
+      50%{background-position:100% 50%} 
+      100%{background-position:0% 50%} 
+    }
+    .glass { background: rgba(255,255,255,0.05); backdrop-filter: blur(8px); border:1px solid rgba(255,255,255,0.08); border-radius:20px; padding:2rem; box-shadow:0 10px 40px rgba(0,0,0,0.6); text-align:center; }
+    .btn { padding:0.75rem 1.5rem; border-radius:12px; font-weight:600; background:linear-gradient(90deg,#7c3aed,#06b6d4); color:white; transition:0.3s; display:inline-block; }
+    .btn:hover { opacity:0.85; }
+  </style>
 </head>
 <body>
 
-<h1>Thank You!</h1>
-<p>Your purchase was successful. Click below to download your digital products instantly.</p>
-<button class="btn" id="downloadBtn">Download Now</button>
+  <div class="glass max-w-lg">
+    <img src="images/logo.png" alt="Kedarnath Advertising" class="mx-auto mb-4 w-20 h-20">
+    <h1 class="text-4xl font-bold mb-4">Thank You!</h1>
+    <p class="text-gray-300 mb-6">Your payment was successful. 🎉<br> Click below to download your product.</p>
+    
+    <!-- Replace this with your actual Drive/Zip link -->
+    <a href="https://drive.google.com/your-download-link" class="btn" target="_blank">Download Now</a>
+  </div>
 
-<script>
-  // Trigger confetti on page load
-  window.onload = () => {
-    confetti({
-      particleCount: 150,
-      spread: 70,
-      origin: { y: 0.6 }
-    });
-  };
+  <script>
+    // Confetti burst
+    function launchConfetti(){
+      var duration = 3 * 1000;
+      var end = Date.now() + duration;
 
-  // Get product ID and download link from URL query params
-  const params = new URLSearchParams(window.location.search);
-  const downloadLink = params.get('dl') || 'https://drive.google.com/uc?export=download&id=DRIVE_FILE_ID';
+      (function frame() {
+        confetti({
+          particleCount: 4,
+          angle: 60,
+          spread: 55,
+          origin: { x: 0 }
+        });
+        confetti({
+          particleCount: 4,
+          angle: 120,
+          spread: 55,
+          origin: { x: 1 }
+        });
 
-  document.getElementById('downloadBtn').addEventListener('click', () => {
-    window.location.href = downloadLink;
-  });
-</script>
+        if (Date.now() < end) {
+          requestAnimationFrame(frame);
+        }
+      })();
+    }
+
+    window.onload = launchConfetti;
+  </script>
 
 </body>
 </html>
