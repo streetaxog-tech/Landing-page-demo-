@@ -1,71 +1,51 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Thank you — Midow Web Creator</title>
-  <meta name="description" content="Thanks — download your files." />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- confetti (canvas) -->
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-  <style>
-    body { margin:0; font-family: Inter, system-ui, -apple-system; background: linear-gradient(180deg,#071026 0%, #061325 100%); color: #eef2ff; -webkit-font-smoothing:antialiased; }
-    .card { max-width:720px; margin:72px auto; background: rgba(255,255,255,0.03); border-radius:12px; padding:32px; box-shadow: 0 20px 60px rgba(2,6,23,0.7); text-align:center; }
-    .download-btn { display:inline-block; padding:12px 20px; border-radius:10px; background: linear-gradient(90deg,#06b6d4,#7c3aed); color:white; text-decoration:none; font-weight:600; box-shadow: 0 12px 30px rgba(99,102,241,0.18); }
-    .muted { color:#b7c5de; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank You - Premium Motion Packs</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Canvas Confetti -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<style>
+  body { margin:0; font-family:'Inter',sans-serif; background:#060617; color:#e6eef8; display:flex; justify-content:center; align-items:center; height:100vh; flex-direction:column; text-align:center; }
+  h1 { font-family:'Montserrat',sans-serif; font-size:3rem; margin-bottom:1rem; }
+  p { color:#a9b7d6; margin-bottom:2rem; }
+  .btn { padding:0.75rem 1.5rem; border-radius:10px; font-weight:600; cursor:pointer; transition:0.3s; background:linear-gradient(90deg,#7c3aed,#06b6d4); color:white; }
+  .btn:hover { opacity:0.85; }
+</style>
 </head>
 <body>
-  <main class="card">
-    <svg width="84" height="84" viewBox="0 0 24 24" class="mx-auto mb-3">
-      <circle cx="12" cy="12" r="11" fill="rgba(124,58,237,0.12)"/>
-      <path d="M9 12.5l2 2 4-5" stroke="#7c3aed" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-    </svg>
-    <h1 class="text-2xl font-semibold">Thanks — Order Confirmed</h1>
-    <p id="msg" class="muted mt-2">Your download will start automatically. If it doesn't, use the button below.</p>
 
-    <div id="actions" class="mt-6">
-      <a id="downloadBtn" class="download-btn" href="#" target="_blank" rel="noopener">Download Now</a>
-      <div class="mt-4 muted text-sm">A copy of the download link has also been sent to your email (if provided).</div>
-    </div>
-
-    <div class="mt-6 muted text-xs">Need help? WhatsApp: <strong class="text-white">8793727113</strong></div>
-  </main>
+<h1>Thank You!</h1>
+<p>Your purchase was successful. Click below to download your digital products instantly.</p>
+<button class="btn" id="downloadBtn">Download Now</button>
 
 <script>
-  // read params
-  const params = new URLSearchParams(window.location.search);
-  const dl = params.get('dl');
-  const product = params.get('product');
-
-  const downloadBtn = document.getElementById('downloadBtn');
-  const msg = document.getElementById('msg');
-
-  if (dl) {
-    downloadBtn.href = dl;
-    // launch confetti and auto-open
+  // Trigger confetti on page load
+  window.onload = () => {
     confetti({
-      particleCount: 120,
+      particleCount: 150,
       spread: 70,
-      origin: { y: 0.4 }
+      origin: { y: 0.6 }
     });
-    setTimeout(() => {
-      try {
-        window.open(dl, '_blank');
-        msg.textContent = 'Your download has started in a new tab. If it did not, click "Download Now".';
-      } catch(e) {
-        msg.textContent = 'Click "Download Now" if the download did not start automatically.';
-      }
-    }, 900);
-  } else {
-    msg.textContent = 'We could not find a download link. Please check your email or contact support.';
-    downloadBtn.style.display = 'none';
-  }
+  };
 
-  // small pulse animation for button
-  setInterval(() => {
-    downloadBtn.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.03)' }, { transform: 'scale(1)'}], { duration: 1800, easing:'ease-in-out' });
-  }, 2200);
+  // Get product ID and download link from URL query params
+  const params = new URLSearchParams(window.location.search);
+  const downloadLink = params.get('dl') || 'https://drive.google.com/uc?export=download&id=DRIVE_FILE_ID';
+
+  document.getElementById('downloadBtn').addEventListener('click', () => {
+    window.location.href = downloadLink;
+  });
 </script>
+
 </body>
 </html>
