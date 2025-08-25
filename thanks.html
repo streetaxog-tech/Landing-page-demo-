@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Thank you — Midow Web Creator</title>
+  <meta name="description" content="Thank you for your purchase. Your download will begin shortly." />
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background: linear-gradient(180deg,#0b1020 0%, #0b1226 100%); color: #eef2ff; -webkit-font-smoothing:antialiased; }
+    .card { border-radius:12px; background: rgba(255,255,255,0.04); backdrop-filter: blur(6px); box-shadow: 0 10px 40px rgba(2,6,23,0.6); }
+    a.download { display:inline-block; padding:10px 18px; border-radius:8px; background:#6366F1; color:white; text-decoration:none; }
+    .muted { color: #b8c2d9; }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center">
+
+  <main class="max-w-2xl w-full p-8 card">
+    <div class="text-center">
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" class="mx-auto mb-4">
+        <path d="M12 2v6" stroke="#8b5cf6" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M5 12l2.5 2.5L11 11" stroke="#8b5cf6" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="12" cy="12" r="9" stroke="#ffffff20" stroke-width="1.2"/>
+      </svg>
+
+      <h1 class="text-2xl font-semibold">Thank you for your purchase!</h1>
+      <p id="sub" class="muted mt-2">We're preparing your download. It should begin automatically. If not, use the button below.</p>
+
+      <div id="actions" class="mt-6 flex justify-center gap-3">
+        <a id="downloadBtn" class="download" href="#" target="_blank" rel="noopener">Download Now</a>
+        <a id="homeBtn" class="muted underline" href="index.html">Return to Home</a>
+      </div>
+
+      <div id="extra" class="text-sm muted mt-5">
+        <p>Check your email for the download link as well. If you face any issue, contact <strong>8793727113</strong> (WhatsApp).</p>
+      </div>
+    </div>
+  </main>
+
+<script>
+  // Read query params
+  const params = new URLSearchParams(window.location.search);
+  const dl = params.get('dl'); // direct download url
+  const product = params.get('product');
+  const btn = document.getElementById('downloadBtn');
+  const sub = document.getElementById('sub');
+
+  if (dl) {
+    // set link
+    btn.setAttribute('href', dl);
+    // try auto-open (best effort)
+    setTimeout(() => {
+      try {
+        // open in new tab so user retains this page as fallback
+        window.open(dl, '_blank');
+        sub.textContent = 'Your download has started in a new tab. If it did not, click "Download Now".';
+      } catch (e) {
+        sub.textContent = 'Click the Download button if the download did not start automatically.';
+      }
+    }, 900);
+  } else {
+    // no dl param provided
+    sub.textContent = 'We could not find an automatic download link. Please check your email or contact support.';
+    btn.style.display = 'none';
+  }
+
+  // Analytics / Pixel (optional - paste pixel code here if needed)
+  // Example placeholder:
+  // (function(){ /* pixel init */ })();
+</script>
+
+</body>
+</html>
