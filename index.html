@@ -112,6 +112,28 @@
             </button>
           </div>
         </div>
+
+        <!-- Product 3 (₹99 only) -->
+        <div class="card glass rounded-2xl p-7 shadow-soft transition md:col-span-2">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-2xl font-bold">📦 All-in-One Bundle (Special Offer)</h3>
+            <span class="text-white/70 text-sm">limited time</span>
+          </div>
+          <p class="text-white/80">
+            300+ Wedding PSDs + Complete Graphics Pack in one bundle. Perfect for creators & studios.
+          </p>
+          <div class="mt-6 flex items-end justify-between">
+            <div>
+              <div class="text-white/70 text-sm">Price</div>
+              <div class="text-2xl font-bold">₹99 <span class="text-sm line-through opacity-70">₹999</span></div>
+            </div>
+            <button
+              class="px-6 py-3 rounded-lg btn-grad font-semibold shadow-soft"
+              onclick="startPayment(9900,'All-in-One Bundle','Special discounted pack')">
+              🛒 Buy Now
+            </button>
+          </div>
+        </div>
       </div>
 
       <!-- Trust Badges -->
@@ -131,7 +153,7 @@
         Have questions or need a custom pack? Send us a message — we’ll get back ASAP.
       </p>
 
-      <!-- Simple form: redirects to thanks.html; hook EmailJS/backend later -->
+      <!-- Simple form: redirects to thanks.html -->
       <form action="thanks.html" method="GET" class="grid md:grid-cols-2 gap-5">
         <div class="md:col-span-1">
           <label class="block text-sm mb-2">Full Name</label>
@@ -183,22 +205,16 @@
   <script>
     function startPayment(amountPaise, productName, description) {
       const options = {
-        key: "rzp_test_XXXXXXXXXXXXXX",  // TODO: apna Razorpay Key ID daalo
-        amount: amountPaise,            // paise me (₹1999 -> 199900)
+        key: "rzp_test_XXXXXXXXXXXXXX",  // apna Razorpay Key ID yaha daal
+        amount: amountPaise,
         currency: "INR",
         name: "Kedarnath Advertising",
         description,
         image: "logo.png",
         handler: function (response) {
-          // Payment success → safe page (thanks.html) pe bhejo
-          // NOTE: Real security ke liye backend verify + gated download serve karo
           window.location.href = "thanks.html?payment_id=" + encodeURIComponent(response.razorpay_payment_id);
         },
-        prefill: {
-          name: "",
-          email: "",
-          contact: ""
-        },
+        prefill: { name: "", email: "", contact: "" },
         theme: { color: "#7f5af0" }
       };
       const rzp = new Razorpay(options);
@@ -206,4 +222,4 @@
     }
   </script>
 </body>
-            </html>
+</html>
