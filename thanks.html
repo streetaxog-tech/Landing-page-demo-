@@ -1,131 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Thank You • Kedarnath Advertising</title>
-  <link rel="icon" type="image/png" href="favicon.png" />
-
-  <!-- Tailwind -->
+  <title>Thank You - Kedarnath Advertising</title>
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Confetti -->
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
   <style>
-    :root {
-      --g1: #0f0e17;
-      --g2: #25264d;
-      --g3: #3a2f6d;
-      --g4: #1a2a4a;
-    }
-    * { box-sizing: border-box; }
-    body {
-      min-height: 100vh;
-      color: #fff;
-      overflow-x: hidden;
-      position: relative;
-      /* Animated premium gradient (no video) */
-      background: linear-gradient(135deg, var(--g1), var(--g2), var(--g3), var(--g4));
-      background-size: 400% 400%;
-      animation: bgshift 18s ease-in-out infinite;
-    }
-    @keyframes bgshift {
-      0%   { background-position: 0% 50%; }
-      50%  { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    /* Soft grain overlay for depth */
-    .grain:before{
-      content:"";
-      position:fixed; inset:0; pointer-events:none; z-index:0;
-      background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
-      background-size: 3px 3px;
-      mix-blend-mode: overlay;
-      opacity: .25;
-    }
-    /* Glass card */
-    .glass {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.14);
-      backdrop-filter: blur(14px);
-      box-shadow: 0 20px 60px rgba(0,0,0,.35);
-    }
-    .btn-grad {
-      background: linear-gradient(90deg,#7f5af0,#2cb67d);
-      transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
-    }
-    .btn-grad:hover { transform: translateY(-2px) scale(1.02); box-shadow:0 12px 30px rgba(127,90,240,.35); opacity:.96; }
+    body { background: linear-gradient(135deg,#0f0e17,#1b1a2e); color:#fff; }
+    .glass { background: rgba(255,255,255,0.08); backdrop-filter: blur(12px); border:1px solid rgba(255,255,255,0.12);}
   </style>
 </head>
-<body class="grain flex items-center justify-center px-6">
-
-  <!-- Container -->
-  <main class="relative z-10 w-full max-w-xl text-center glass rounded-2xl p-8">
-    <img src="logo.png" alt="Kedarnath Advertising" class="w-20 h-20 mx-auto mb-5" />
-    <h1 class="text-3xl md:text-4xl font-extrabold mb-3">Thank You! 🎉</h1>
-
-    <!-- Success block (shown only if payment verified via query params) -->
-    <div id="successBox" class="hidden">
-      <p class="text-white/85 mb-6">
-        Your payment was successful. You can download your product below.
-      </p>
-
-      <!-- TODO: apna real secure URL yaha set karo (ideally server-verified) -->
-      <a id="downloadBtn" href="#" target="_blank"
-         class="inline-block w-full md:w-auto px-6 py-3 rounded-lg btn-grad font-semibold">
-         ⬇ Download Your Files
-      </a>
-      <p class="text-xs text-white/60 mt-3">
-        Note: Link is time-limited. Save your files securely.
-      </p>
+<body class="h-screen flex items-center justify-center">
+  <div class="glass rounded-2xl p-10 max-w-lg text-center">
+    <h1 class="text-4xl font-bold text-green-400 mb-4">✅ Payment Successful!</h1>
+    <p class="mb-6">Thank you for purchasing. Your download links are ready below:</p>
+    <div class="space-y-3">
+      <a href="https://drive.google.com/drive/u/4/folders/1ZjJJ-6-pcS_fjDvo81qkhhxa8z6APjDm" target="_blank" class="block px-6 py-3 rounded-lg btn-grad font-semibold shadow-soft">📂 Wedding PSD Files</a>
+      <a href="https://drive.google.com/drive/folders/161lWIW0ad2LmYchO6M0yBri52UiUJZdc?usp=sharing" target="_blank" class="block px-6 py-3 rounded-lg btn-grad font-semibold shadow-soft">📂 All-in-One Graphics Bundle</a>
     </div>
-
-    <!-- Fallback / not verified -->
-    <div id="pendingBox" class="hidden">
-      <p class="text-amber-100/90 mb-4">
-        We couldn’t verify the payment on this page.
-      </p>
-      <p class="text-white/70 text-sm mb-6">
-        If you completed the payment, please wait for the confirmation email or contact support with your Payment ID.
-      </p>
-      <a href="index.html" class="inline-block px-6 py-3 rounded-lg bg-white/10 border border-white/20 hover:bg-white/20 transition">
-        ⬅ Back to Homepage
-      </a>
-    </div>
-
-    <!-- Footer line -->
-    <div class="mt-8 pt-6 border-t border-white/15 text-xs text-white/60">
-      © 2025 Kedarnath Advertising • All Rights Reserved
-    </div>
-  </main>
+    <p class="mt-8 text-white/70">Need help? Contact us: <strong>+91 99216 13113</strong></p>
+  </div>
 
   <script>
-    // CONFIG — set your secure download URL (served by backend after verify)
-    const SECURE_DOWNLOAD_URL = "https://drive.google.com/your-secure-file-link"; // replace with gated link
-
-    // Check query for payment verification hint
-    const qs = new URLSearchParams(location.search);
-    const hasPayment = qs.has("payment_id") || (qs.get("status") || "").toLowerCase() === "success";
-
-    const successBox = document.getElementById("successBox");
-    const pendingBox = document.getElementById("pendingBox");
-    const downloadBtn = document.getElementById("downloadBtn");
-
-    if (hasPayment) {
-      successBox.classList.remove("hidden");
-      downloadBtn.href = SECURE_DOWNLOAD_URL;
-
-      // Confetti celebration
-      const duration = 2200;
-      const end = Date.now() + duration;
-      (function frame() {
-        confetti({ particleCount: 5, angle: 60, spread: 55, origin: { x: 0 } });
-        confetti({ particleCount: 5, angle: 120, spread: 55, origin: { x: 1 } });
-        if (Date.now() < end) requestAnimationFrame(frame);
-      })();
-    } else {
-      pendingBox.classList.remove("hidden");
+    // prevent direct access without Razorpay
+    if(!document.referrer.includes("rzp.io")) {
+      window.location.href = "index.html";
     }
   </script>
 </body>
