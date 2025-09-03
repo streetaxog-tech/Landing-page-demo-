@@ -15,12 +15,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
 
-  <!-- Razorpay -->
-  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-
   <style>
-    * { box-sizing: border-box; }
-    body { color:#fff; overflow-x:hidden; }
+    body { color:#fff; overflow-x:hidden; background: linear-gradient(135deg, #0f0e17, #1b1a2e); }
     .glass { background: rgba(255,255,255,0.08); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.12); }
     .btn-grad {
       background: linear-gradient(90deg,#7f5af0,#2cb67d);
@@ -68,70 +64,46 @@
     <div class="max-w-6xl mx-auto">
       <h2 class="text-3xl md:text-4xl font-bold text-center mb-10">Our Digital Products</h2>
 
-      <div class="grid md:grid-cols-2 gap-8">
+      <div class="grid md:grid-cols-3 gap-8">
         <!-- Product 1 -->
         <div class="card glass rounded-2xl p-7 shadow-soft transition">
-          <div class="flex items-center justify-between mb-3">
-            <h3 class="text-2xl font-bold">✨ Motion Graphics Mega Pack</h3>
-            <span class="text-white/70 text-sm">v1.0</span>
-          </div>
-          <p class="text-white/80">
-            1500+ overlays, transitions, HUDs & reels-ready animations. Formats: MP4, MOV, PNG sequences.
-          </p>
+          <img src="product1.jpg" alt="Motion Graphics Mega Pack" class="w-full h-48 object-cover rounded-lg mb-4"/>
+          <h3 class="text-2xl font-bold mb-3">✨ Motion Graphics Mega Pack</h3>
+          <p class="text-white/80">1500+ overlays, transitions, HUDs & reels-ready animations.</p>
           <div class="mt-6 flex items-end justify-between">
             <div>
-              <div class="text-white/70 text-sm">Price</div>
-              <div class="text-2xl font-bold">₹1,999</div>
+              <div class="text-white/70 text-sm">Offer Price</div>
+              <div class="text-2xl font-bold text-green-400">₹99 Only</div>
             </div>
-            <button
-              class="px-6 py-3 rounded-lg btn-grad font-semibold shadow-soft"
-              onclick="startPayment(199900,'Motion Graphics Mega Pack','Digital download license')">
-              🛒 Buy Now
-            </button>
+            <a href="https://rzp.io/rzp/S6tun30" class="px-6 py-3 rounded-lg btn-grad font-semibold shadow-soft">🛒 Buy Now</a>
           </div>
         </div>
 
         <!-- Product 2 -->
         <div class="card glass rounded-2xl p-7 shadow-soft transition">
-          <div class="flex items-center justify-between mb-3">
-            <h3 class="text-2xl font-bold">🎨 Graphic Design Pro Bundle</h3>
-            <span class="text-white/70 text-sm">v2.3</span>
-          </div>
-          <p class="text-white/80">
-            500+ PSD, AI, and Figma templates for ads, posts, posters & branding kits. Fully editable sources.
-          </p>
+          <img src="product2.jpg" alt="Graphic Design Pro Bundle" class="w-full h-48 object-cover rounded-lg mb-4"/>
+          <h3 class="text-2xl font-bold mb-3">🎨 Graphic Design Pro Bundle</h3>
+          <p class="text-white/80">500+ PSD, AI, and Figma templates for ads, posts, posters & branding kits.</p>
           <div class="mt-6 flex items-end justify-between">
             <div>
-              <div class="text-white/70 text-sm">Price</div>
-              <div class="text-2xl font-bold">₹2,499</div>
+              <div class="text-white/70 text-sm">Offer Price</div>
+              <div class="text-2xl font-bold text-green-400">₹99 Only</div>
             </div>
-            <button
-              class="px-6 py-3 rounded-lg btn-grad font-semibold shadow-soft"
-              onclick="startPayment(249900,'Graphic Design Pro Bundle','Digital download license')">
-              🛒 Buy Now
-            </button>
+            <a href="https://rzp.io/rzp/f6Nm07C" class="px-6 py-3 rounded-lg btn-grad font-semibold shadow-soft">🛒 Buy Now</a>
           </div>
         </div>
 
-        <!-- Product 3 (₹99 only) -->
-        <div class="card glass rounded-2xl p-7 shadow-soft transition md:col-span-2">
-          <div class="flex items-center justify-between mb-3">
-            <h3 class="text-2xl font-bold">📦 All-in-One Bundle (Special Offer)</h3>
-            <span class="text-white/70 text-sm">limited time</span>
-          </div>
-          <p class="text-white/80">
-            300+ Wedding PSDs + Complete Graphics Pack in one bundle. Perfect for creators & studios.
-          </p>
+        <!-- Product 3 -->
+        <div class="card glass rounded-2xl p-7 shadow-soft transition">
+          <img src="product3.jpg" alt="All-in-One Graphics Bundle" class="w-full h-48 object-cover rounded-lg mb-4"/>
+          <h3 class="text-2xl font-bold mb-3">📦 All-in-One Graphics Bundle</h3>
+          <p class="text-white/80">300+ Wedding PSD files + All design resources in one package.</p>
           <div class="mt-6 flex items-end justify-between">
             <div>
-              <div class="text-white/70 text-sm">Price</div>
-              <div class="text-2xl font-bold">₹99 <span class="text-sm line-through opacity-70">₹999</span></div>
+              <div class="text-white/70 text-sm">Offer Price</div>
+              <div class="text-2xl font-bold text-green-400">₹99 Only</div>
             </div>
-            <button
-              class="px-6 py-3 rounded-lg btn-grad font-semibold shadow-soft"
-              onclick="startPayment(9900,'All-in-One Bundle','Special discounted pack')">
-              🛒 Buy Now
-            </button>
+            <a href="https://rzp.io/rzp/PWhkblL" class="px-6 py-3 rounded-lg btn-grad font-semibold shadow-soft">🛒 Buy Now</a>
           </div>
         </div>
       </div>
@@ -149,34 +121,13 @@
   <section id="contact" class="section">
     <div class="max-w-3xl mx-auto glass rounded-2xl p-8 shadow-soft">
       <h2 class="text-3xl font-bold text-center mb-6">Contact Us</h2>
-      <p class="text-center text-white/80 mb-8">
-        Have questions or need a custom pack? Send us a message — we’ll get back ASAP.
-      </p>
-
-      <!-- Simple form: redirects to thanks.html -->
       <form action="thanks.html" method="GET" class="grid md:grid-cols-2 gap-5">
-        <div class="md:col-span-1">
-          <label class="block text-sm mb-2">Full Name</label>
-          <input name="name" required class="w-full rounded-lg px-4 py-3 text-black" placeholder="Your name"/>
-        </div>
-        <div class="md:col-span-1">
-          <label class="block text-sm mb-2">Email</label>
-          <input type="email" name="email" required class="w-full rounded-lg px-4 py-3 text-black" placeholder="you@example.com"/>
-        </div>
-        <div class="md:col-span-2">
-          <label class="block text-sm mb-2">Message</label>
-          <textarea name="message" rows="4" required class="w-full rounded-lg px-4 py-3 text-black" placeholder="Tell us about your requirements"></textarea>
-        </div>
-        <div class="md:col-span-2">
-          <button type="submit" class="w-full px-6 py-3 rounded-lg btn-grad font-semibold shadow-soft">
-            ✉ Send Message
-          </button>
-        </div>
+        <input name="name" required class="w-full rounded-lg px-4 py-3 text-black" placeholder="Your name"/>
+        <input type="email" name="email" required class="w-full rounded-lg px-4 py-3 text-black" placeholder="you@example.com"/>
+        <textarea name="message" rows="4" required class="w-full rounded-lg px-4 py-3 text-black md:col-span-2" placeholder="Tell us about your requirements"></textarea>
+        <button type="submit" class="w-full px-6 py-3 rounded-lg btn-grad font-semibold shadow-soft md:col-span-2">✉ Send Message</button>
       </form>
-
-      <p class="text-center text-white/70 mt-6">
-        Or call us: <strong>+91 99216 13113</strong>
-      </p>
+      <p class="text-center text-white/70 mt-6">Or call us: <strong>+91 99216 13113</strong></p>
     </div>
   </section>
 
@@ -199,27 +150,6 @@
       color2: 0x2cb67d,
       backgroundColor: 0x0f0e17
     });
-  </script>
-
-  <!-- Razorpay Checkout -->
-  <script>
-    function startPayment(amountPaise, productName, description) {
-      const options = {
-        key: "rzp_test_XXXXXXXXXXXXXX",  // apna Razorpay Key ID yaha daal
-        amount: amountPaise,
-        currency: "INR",
-        name: "Kedarnath Advertising",
-        description,
-        image: "logo.png",
-        handler: function (response) {
-          window.location.href = "thanks.html?payment_id=" + encodeURIComponent(response.razorpay_payment_id);
-        },
-        prefill: { name: "", email: "", contact: "" },
-        theme: { color: "#7f5af0" }
-      };
-      const rzp = new Razorpay(options);
-      rzp.open();
-    }
   </script>
 </body>
 </html>
