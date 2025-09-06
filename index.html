@@ -63,44 +63,42 @@
         <!-- Product 1 -->
         <div class="card glass rounded-2xl p-7 shadow-soft transition">
           <img src="product1.jpg" class="rounded-lg mb-4" alt="Wedding PSD Pack"/>
-          <h3 class="text-2xl font-bold mb-2">💍 ALL-IN-ONE
-
-DIGITAL BUNDLE</h3>
+          <h3 class="text-2xl font-bold mb-2">💍 All-in-One Digital Bundle</h3>
           <p class="text-white/80">Editable wedding invitation, album, and poster PSD files ready for customization.</p>
           <div class="mt-6 flex items-end justify-between">
             <div>
               <div class="text-white/70 text-sm">Offer Price</div>
               <div class="text-2xl font-bold">₹99 Only</div>
             </div>
-            <a href="https://rzp.io/rzp/S6tun30" class="px-6 py-3 rounded-lg btn-grad font-semibold shadow-soft">🛒 Buy Now</a>
+            <button onclick="payNow('S6tun30')" class="px-6 py-3 rounded-lg btn-grad font-semibold shadow-soft">🛒 Buy Now</button>
           </div>
         </div>
 
         <!-- Product 2 -->
         <div class="card glass rounded-2xl p-7 shadow-soft transition">
           <img src="product2.jpg" class="rounded-lg mb-4" alt="Graphics Pack"/>
-          <h3 class="text-2xl font-bold mb-2">🎨 100VIDEO EDITING ASSETS</h3>
+          <h3 class="text-2xl font-bold mb-2">🎨 100+ Video Editing Assets</h3>
           <p class="text-white/80">500+ PSD, AI, and Figma templates for ads, posts, posters & branding kits.</p>
           <div class="mt-6 flex items-end justify-between">
             <div>
               <div class="text-white/70 text-sm">Offer Price</div>
               <div class="text-2xl font-bold">₹99 Only</div>
             </div>
-            <a href="https://rzp.io/rzp/f6Nm07C" class="px-6 py-3 rounded-lg btn-grad font-semibold shadow-soft">🛒 Buy Now</a>
+            <button onclick="payNow('f6Nm07C')" class="px-6 py-3 rounded-lg btn-grad font-semibold shadow-soft">🛒 Buy Now</button>
           </div>
         </div>
 
         <!-- Product 3 -->
         <div class="card glass rounded-2xl p-7 shadow-soft transition">
           <img src="product3.jpg" class="rounded-lg mb-4" alt="Motion Pack"/>
-          <h3 class="text-2xl font-bold mb-2">✨ TRENDING WEEDING INVITATION PSD</h3>
+          <h3 class="text-2xl font-bold mb-2">✨ Trending Wedding Invitation PSD</h3>
           <p class="text-white/80">1500+ overlays, transitions, reels-ready animations in MP4 & PNG formats.</p>
           <div class="mt-6 flex items-end justify-between">
             <div>
               <div class="text-white/70 text-sm">Offer Price</div>
               <div class="text-2xl font-bold">₹99 Only</div>
             </div>
-            <a href="https://rzp.io/rzp/PWhkblL" class="px-6 py-3 rounded-lg btn-grad font-semibold shadow-soft">🛒 Buy Now</a>
+            <button onclick="payNow('PWhkblL')" class="px-6 py-3 rounded-lg btn-grad font-semibold shadow-soft">🛒 Buy Now</button>
           </div>
         </div>
       </div>
@@ -138,6 +136,15 @@ DIGITAL BUNDLE</h3>
     © 2025 Kedarnath Advertising • All Rights Reserved
   </footer>
 
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/919921613113?text=Hi%20Kedarnath%20Advertising,%20I%20want%20to%20know%20more%20about%20your%20products." 
+     class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition transform hover:scale-110 z-50"
+     target="_blank" aria-label="Chat on WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M20.52 3.48A11.77 11.77 0 0 0 12.04 0C5.4 0 0 5.19 0 11.6c0 2.05.54 4.05 1.57 5.82L0 24l6.77-1.77c1.68.92 3.58 1.4 5.54 1.4h.01c6.63 0 12.04-5.19 12.04-11.6 0-3.1-1.25-6-3.54-8.25ZM12.32 21.5h-.01c-1.74 0-3.44-.46-4.93-1.32l-.35-.2-4.02 1.05 1.07-3.92-.23-.4a9.54 9.54 0 0 1-1.4-4.9c0-5.24 4.38-9.5 9.77-9.5 2.61 0 5.06 1 6.9 2.82a9.49 9.49 0 0 1 2.87 6.84c0 5.24-4.38 9.5-9.77 9.5Zm5.37-7.13c-.29-.14-1.71-.84-1.97-.94-.26-.1-.45-.14-.64.14-.19.28-.74.94-.91 1.13-.17.19-.34.21-.63.07-.29-.14-1.23-.45-2.34-1.44-.87-.77-1.46-1.72-1.63-2.01-.17-.28-.02-.43.13-.57.13-.13.29-.34.43-.5.14-.17.19-.28.29-.47.1-.19.05-.36-.02-.5-.07-.14-.64-1.54-.88-2.12-.23-.55-.47-.48-.64-.49h-.55c-.19 0-.5.07-.76.36-.26.28-1 1-1 2.45s1.02 2.85 1.16 3.05c.14.19 2 3.19 4.83 4.39.67.29 1.19.46 1.6.59.67.21 1.28.18 1.76.11.54-.08 1.71-.7 1.95-1.37.24-.67.24-1.24.17-1.37-.07-.13-.26-.21-.55-.35Z"/>
+    </svg>
+  </a>
+
   <script>
     VANTA.GLOBE({
       el: "#bg",
@@ -151,6 +158,28 @@ DIGITAL BUNDLE</h3>
       color2: 0x2cb67d,
       backgroundColor: 0x0f0e17
     });
+
+    function payNow(linkCode){
+      var options = {
+        "key": "rzp_test_123456789", 
+        "amount": 9900, 
+        "currency": "INR",
+        "name": "Kedarnath Advertising",
+        "description": "Digital Product Purchase",
+        "image": "logo.png",
+        "handler": function (response){
+            window.location.href = "thanks.html?payment_id=" + response.razorpay_payment_id;
+        },
+        "prefill": {
+          "name": "",
+          "email": "",
+          "contact": ""
+        },
+        "theme": { "color": "#7f5af0" }
+      };
+      var rzp1 = new Razorpay(options);
+      rzp1.open();
+    }
   </script>
 </body>
-          </html>
+</html>
