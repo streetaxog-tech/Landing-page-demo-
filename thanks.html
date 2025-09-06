@@ -3,45 +3,183 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Thank You - Kedarnath Advertising</title>
+  <title>Kedarnath Advertising - Premium Landing</title>
+
+  <link rel="icon" type="image/png" href="favicon.png"/>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
   <style>
-    body { background:#0f0e17; color:#fff; text-align:center; padding:50px; }
+    body { color:#fff; overflow-x:hidden; }
+    .glass { background: rgba(255,255,255,0.08); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.12); }
     .btn-grad {
       background: linear-gradient(90deg,#7f5af0,#2cb67d);
-      padding:12px 25px; border-radius:12px; font-weight:600;
-      display:inline-block; margin-top:20px;
+      transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
     }
+    .btn-grad:hover { transform: translateY(-2px) scale(1.02); box-shadow:0 12px 30px rgba(127,90,240,.35); opacity:.96; }
+    .section { padding: 5rem 1.25rem; }
+    .shadow-soft { box-shadow: 0 10px 35px rgba(0,0,0,.35); }
+    .card:hover { transform: translateY(-6px); }
   </style>
 </head>
-<body>
-  <h1 class="text-4xl font-bold mb-4">🎉 Payment Successful!</h1>
-  <p class="text-white/80 mb-6">Thank you for your purchase. Your download link is below:</p>
+<body class="min-h-screen relative">
+  <div id="bg" class="absolute inset-0 -z-10"></div>
 
-  <div id="downloadLink"></div>
+  <!-- Navbar -->
+  <header class="w-full px-6 md:px-10 py-5 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <img src="logo.png" alt="Kedarnath Advertising" class="w-12 h-12"/>
+      <span class="text-xl font-semibold">Kedarnath Advertising</span>
+    </div>
+    <nav class="hidden md:flex items-center gap-6">
+      <a href="#products" class="opacity-90 hover:opacity-100">Products</a>
+      <a href="#contact" class="opacity-90 hover:opacity-100">Contact</a>
+      <a href="#products" class="px-4 py-2 rounded-full btn-grad shadow-soft text-sm font-semibold">Buy Now</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="section text-center">
+    <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+      Premium <span class="text-indigo-300">Graphics</span> & <span class="text-emerald-300">Motion</span> Assets
+    </h1>
+    <p class="max-w-2xl mx-auto mt-4 text-white/80">
+      Elevate your brand with world-class design bundles, AI-ready templates, and studio-grade motion packs.
+    </p>
+    <div class="mt-8 flex items-center justify-center gap-4">
+      <a href="#products" class="px-7 py-3 rounded-full btn-grad font-semibold shadow-soft">Explore Products</a>
+      <a href="#contact" class="px-7 py-3 rounded-full glass font-semibold border border-white/15">Talk to Us</a>
+    </div>
+  </section>
+
+  <!-- Products -->
+  <section id="products" class="section">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-10">Our Digital Products</h2>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Product 1 -->
+        <div class="card glass rounded-2xl p-7 shadow-soft transition">
+          <img src="product1.jpg" class="rounded-lg mb-4" alt="Wedding PSD Pack"/>
+          <h3 class="text-2xl font-bold mb-2">💍 All-in-One Digital Bundle</h3>
+          <p class="text-white/80">Editable wedding invitation, album, and poster PSD files ready for customization.</p>
+          <div class="mt-6 flex items-end justify-between">
+            <div>
+              <div class="text-white/70 text-sm">Offer Price</div>
+              <div class="text-2xl font-bold">₹99 Only</div>
+            </div>
+            <button onclick="payNow('S6tun30')" class="px-6 py-3 rounded-lg btn-grad font-semibold shadow-soft">🛒 Buy Now</button>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="card glass rounded-2xl p-7 shadow-soft transition">
+          <img src="product2.jpg" class="rounded-lg mb-4" alt="Graphics Pack"/>
+          <h3 class="text-2xl font-bold mb-2">🎨 100+ Video Editing Assets</h3>
+          <p class="text-white/80">500+ PSD, AI, and Figma templates for ads, posts, posters & branding kits.</p>
+          <div class="mt-6 flex items-end justify-between">
+            <div>
+              <div class="text-white/70 text-sm">Offer Price</div>
+              <div class="text-2xl font-bold">₹99 Only</div>
+            </div>
+            <button onclick="payNow('f6Nm07C')" class="px-6 py-3 rounded-lg btn-grad font-semibold shadow-soft">🛒 Buy Now</button>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="card glass rounded-2xl p-7 shadow-soft transition">
+          <img src="product3.jpg" class="rounded-lg mb-4" alt="Motion Pack"/>
+          <h3 class="text-2xl font-bold mb-2">✨ Trending Wedding Invitation PSD</h3>
+          <p class="text-white/80">1500+ overlays, transitions, reels-ready animations in MP4 & PNG formats.</p>
+          <div class="mt-6 flex items-end justify-between">
+            <div>
+              <div class="text-white/70 text-sm">Offer Price</div>
+              <div class="text-2xl font-bold">₹99 Only</div>
+            </div>
+            <button onclick="payNow('PWhkblL')" class="px-6 py-3 rounded-lg btn-grad font-semibold shadow-soft">🛒 Buy Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section">
+    <div class="max-w-3xl mx-auto glass rounded-2xl p-8 shadow-soft">
+      <h2 class="text-3xl font-bold text-center mb-6">Contact Us</h2>
+      <form action="thanks.html" method="GET" class="grid md:grid-cols-2 gap-5">
+        <div class="md:col-span-1">
+          <label class="block text-sm mb-2">Full Name</label>
+          <input name="name" required class="w-full rounded-lg px-4 py-3 text-black" placeholder="Your name"/>
+        </div>
+        <div class="md:col-span-1">
+          <label class="block text-sm mb-2">Email</label>
+          <input type="email" name="email" required class="w-full rounded-lg px-4 py-3 text-black" placeholder="you@example.com"/>
+        </div>
+        <div class="md:col-span-2">
+          <label class="block text-sm mb-2">Message</label>
+          <textarea name="message" rows="4" required class="w-full rounded-lg px-4 py-3 text-black" placeholder="Tell us about your requirements"></textarea>
+        </div>
+        <div class="md:col-span-2">
+          <button type="submit" class="w-full px-6 py-3 rounded-lg btn-grad font-semibold shadow-soft">
+            ✉ Send Message
+          </button>
+        </div>
+      </form>
+      <p class="text-center text-white/70 mt-6">Or call us: <strong>+91 99216 13113</strong></p>
+    </div>
+  </section>
+
+  <footer class="py-8 text-center text-white/70">
+    © 2025 Kedarnath Advertising • All Rights Reserved
+  </footer>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/919921613113?text=Hi%20Kedarnath%20Advertising,%20I%20want%20to%20know%20more%20about%20your%20products." 
+     class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition transform hover:scale-110 z-50"
+     target="_blank" aria-label="Chat on WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M20.52 3.48A11.77 11.77 0 0 0 12.04 0C5.4 0 0 5.19 0 11.6c0 2.05.54 4.05 1.57 5.82L0 24l6.77-1.77c1.68.92 3.58 1.4 5.54 1.4h.01c6.63 0 12.04-5.19 12.04-11.6 0-3.1-1.25-6-3.54-8.25ZM12.32 21.5h-.01c-1.74 0-3.44-.46-4.93-1.32l-.35-.2-4.02 1.05 1.07-3.92-.23-.4a9.54 9.54 0 0 1-1.4-4.9c0-5.24 4.38-9.5 9.77-9.5 2.61 0 5.06 1 6.9 2.82a9.49 9.49 0 0 1 2.87 6.84c0 5.24-4.38 9.5-9.77 9.5Zm5.37-7.13c-.29-.14-1.71-.84-1.97-.94-.26-.1-.45-.14-.64.14-.19.28-.74.94-.91 1.13-.17.19-.34.21-.63.07-.29-.14-1.23-.45-2.34-1.44-.87-.77-1.46-1.72-1.63-2.01-.17-.28-.02-.43.13-.57.13-.13.29-.34.43-.5.14-.17.19-.28.29-.47.1-.19.05-.36-.02-.5-.07-.14-.64-1.54-.88-2.12-.23-.55-.47-.48-.64-.49h-.55c-.19 0-.5.07-.76.36-.26.28-1 1-1 2.45s1.02 2.85 1.16 3.05c.14.19 2 3.19 4.83 4.39.67.29 1.19.46 1.6.59.67.21 1.28.18 1.76.11.54-.08 1.71-.7 1.95-1.37.24-.67.24-1.24.17-1.37-.07-.13-.26-.21-.55-.35Z"/>
+    </svg>
+  </a>
 
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const product = params.get("product");
+    VANTA.GLOBE({
+      el: "#bg",
+      mouseControls: true,
+      touchControls: true,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      scale: 1.0,
+      scaleMobile: 1.0,
+      color: 0x7f5af0,
+      color2: 0x2cb67d,
+      backgroundColor: 0x0f0e17
+    });
 
-    let link = "";
-    if(product === "wedding") {
-      link = "https://drive.google.com/drive/u/4/folders/1ZjJJ-6-pcS_fjDvo81qkhhxa8z6APjDm";
-    } else if(product === "graphics") {
-      link = "https://drive.google.com/drive/folders/161lWIW0ad2LmYchO6M0yBri52UiUJZdc?usp=sharing";
-    } else if(product === "motion") {
-      link = "https://drive.google.com/drive/folders/161lWIW0ad2LmYchO6M0yBri52UiUJZdc?usp=sharing";
-    }
-
-    if(link) {
-      document.getElementById("downloadLink").innerHTML = `
-        <a href="${link}" target="_blank" class="btn-grad">⬇ Download Now</a>
-      `;
-    } else {
-      document.getElementById("downloadLink").innerHTML = `
-        <p class="text-red-400">⚠ No valid product found. Please complete payment first.</p>
-      `;
+    function payNow(linkCode){
+      var options = {
+        "key": "rzp_test_123456789", 
+        "amount": 9900, 
+        "currency": "INR",
+        "name": "Kedarnath Advertising",
+        "description": "Digital Product Purchase",
+        "image": "logo.png",
+        "handler": function (response){
+            window.location.href = "thanks.html?payment_id=" + response.razorpay_payment_id;
+        },
+        "prefill": {
+          "name": "",
+          "email": "",
+          "contact": ""
+        },
+        "theme": { "color": "#7f5af0" }
+      };
+      var rzp1 = new Razorpay(options);
+      rzp1.open();
     }
   </script>
 </body>
-</html>
+  </html>
