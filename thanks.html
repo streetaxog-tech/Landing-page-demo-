@@ -6,25 +6,42 @@
   <title>Thank You - Kedarnath Advertising</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body { background: linear-gradient(135deg,#0f0e17,#1b1a2e); color:#fff; }
-    .glass { background: rgba(255,255,255,0.08); backdrop-filter: blur(12px); border:1px solid rgba(255,255,255,0.12);}
+    body { background:#0f0e17; color:#fff; text-align:center; padding:50px; }
+    .btn-grad {
+      background: linear-gradient(90deg,#7f5af0,#2cb67d);
+      padding:12px 25px; border-radius:12px; font-weight:600;
+      display:inline-block; margin-top:20px;
+    }
   </style>
 </head>
-<body class="h-screen flex items-center justify-center">
-  <div class="glass rounded-2xl p-10 max-w-lg text-center">
-    <h1 class="text-4xl font-bold text-green-400 mb-4">✅ Payment Successful!</h1>
-    <p class="mb-6">Thank you for purchasing. Your download links are ready below:</p>
-    <div class="space-y-3">
-      <a href="https://drive.google.com/drive/u/4/folders/1ZjJJ-6-pcS_fjDvo81qkhhxa8z6APjDm" target="_blank" class="block px-6 py-3 rounded-lg btn-grad font-semibold shadow-soft">📂 Wedding PSD Files</a>
-      <a href="https://drive.google.com/drive/folders/161lWIW0ad2LmYchO6M0yBri52UiUJZdc?usp=sharing" target="_blank" class="block px-6 py-3 rounded-lg btn-grad font-semibold shadow-soft">📂 All-in-One Graphics Bundle</a>
-    </div>
-    <p class="mt-8 text-white/70">Need help? Contact us: <strong>+91 99216 13113</strong></p>
-  </div>
+<body>
+  <h1 class="text-4xl font-bold mb-4">🎉 Payment Successful!</h1>
+  <p class="text-white/80 mb-6">Thank you for your purchase. Your download link is below:</p>
+
+  <div id="downloadLink"></div>
 
   <script>
-    // prevent direct access without Razorpay
-    if(!document.referrer.includes("rzp.io")) {
-      window.location.href = "index.html";
+    // Redirected product ke hisaab se link show karna
+    const params = new URLSearchParams(window.location.search);
+    const product = params.get("product");
+
+    let link = "";
+    if(product === "wedding") {
+      link = "https://drive.google.com/drive/u/4/folders/1ZjJJ-6-pcS_fjDvo81qkhhxa8z6APjDm";
+    } else if(product === "graphics") {
+      link = "https://drive.google.com/drive/folders/161lWIW0ad2LmYchO6M0yBri52UiUJZdc?usp=sharing";
+    } else if(product === "motion") {
+      link = "https://drive.google.com/drive/folders/161lWIW0ad2LmYchO6M0yBri52UiUJZdc?usp=sharing";
+    }
+
+    if(link) {
+      document.getElementById("downloadLink").innerHTML = `
+        <a href="${link}" target="_blank" class="btn-grad">⬇ Download Now</a>
+      `;
+    } else {
+      document.getElementById("downloadLink").innerHTML = `
+        <p class="text-red-400">⚠ No valid product found. Please complete payment first.</p>
+      `;
     }
   </script>
 </body>
